@@ -1,6 +1,8 @@
 <img src="WebContent/Assets/Based Records Logo.png" width=600px></img>
 
-Based Records is our group project for COSC 304 (Introduction to Databases, Fall 2022) at UBCO. It is set up to run on docker using a container running SQL Server and a container running Apache Tomcat. Tomcat processes the Java servlets, and SQL Server stores the information for the products, orders, customers, and more. The focus of the project was to build a website that communicates with a database using SQL, through a database driver.
+For our COSC 304 group project (Introduction to Databases, Fall 2022) at the University of British-Columbia, we created a vinyl record store named "Based Records". The website is a simple e-commerce site that allows users to browse through a catalog of vinyl records, add them to a shopping cart, and checkout. The website also allows users to create an account and login to view their order history. The website is built using Java servlets and JSPs, and the database is built using SQL.
+
+Our group received one of the top 5 highest marks in the class for this project, thereby gaining a [certification for our dedication](https://ca.badgr.com/public/assertions/moYWFdjHR6aVgz287Tgfpw).
 
 ## Contributors
 
@@ -13,13 +15,13 @@ The contributors of the project were:
 3. [Dhruv Bihani](https://github.com/DhruvBihani)
 4. [Shiv Patel](https://github.com/shh1v)
 
-## Running the website locally
+## Running the Site Locally
 
-To run the site locally, use docker to run `docker-compose up` in the root directory. After the containers have finished starting up, go to [http://localhost/shop/loaddata.jsp](http://localhost/shop/loaddata.jsp), then you should be able to access the home page via [http://localhost/shop](http://localhost/shop).
+To run the site locally, run `docker-compose up` in your Terminal in the root directory with Docker Desktop open. After the containers have finished building, go to [http://localhost/shop/loaddata.jsp](http://localhost/shop/loaddata.jsp). Once the data is loaded, the homepage is accessible via [http://localhost/shop](http://localhost/shop).
 
 ## Screenshots
 
-### Home Page
+### Homepage
 
 ![image](https://user-images.githubusercontent.com/77038122/207140660-6231edf1-cac9-44ea-9051-3b53e26dae46.png)
 
