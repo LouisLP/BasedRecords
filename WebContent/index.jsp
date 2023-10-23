@@ -120,7 +120,15 @@
     <%
     try (Connection con = DriverManager.getConnection(url, uid, pw)) {
       // Select statement to retrieve album information, including the total number of orders for each album
-      String SQL = "SELECT album.albumId, albumName, albumArtist, genreName, albumPrice, albumImageURL, SUM(quantity) AS totalOrders FROM album JOIN genre ON album.genreId = genre.genreId LEFT JOIN orderalbum ON album.albumId = orderalbum.albumId";
+      String SQL = "SELECT album.albumId, \
+      albumName, \
+      albumArtist, \
+      genreName, \
+      albumPrice, \
+      albumImageURL, \
+      SUM(quantity) AS totalOrders \
+      FROM album JOIN genre ON album.genreId = genre.genreId \
+      LEFT JOIN orderalbum ON album.albumId = orderalbum.albumId";
       // If a name filter is provided, add a WHERE clause to the SQL statement
       if (!name.equals("")) {
         SQL += " WHERE albumName LIKE ?";
