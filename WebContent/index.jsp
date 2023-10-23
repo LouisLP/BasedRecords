@@ -119,28 +119,38 @@
     <!-- Listing all the products from the database-->
     <%
     try (Connection con = DriverManager.getConnection(url, uid, pw)) {
-      /* productId, productName, ArtistName, Genre, Price */
+      // Select statement to retrieve album information, including the total number of orders for each album
       String SQL = "SELECT album.albumId, albumName, albumArtist, genreName, albumPrice, albumImageURL, SUM(quantity) AS totalOrders FROM album JOIN genre ON album.genreId = genre.genreId LEFT JOIN orderalbum ON album.albumId = orderalbum.albumId";
+      // If a name filter is provided, add a WHERE clause to the SQL statement
       if (!name.equals("")) {
         SQL += " WHERE albumName LIKE ?";
+        // If a genre filter is also provided, add an additional WHERE clause to the SQL statement
         if (!filter.equals("")) {
           SQL += " AND genreName LIKE ?";
         }
       }
+      // If only a genre filter is provided, add a WHERE clause to the SQL statement
       if (name.equals("") && !filter.equals("")) {
         SQL += " WHERE genreName LIKE ?";
       }
-
+      // Group the results by album ID and order them by total orders in descending order
       SQL += " GROUP BY album.albumId, albumName, albumArtist, genreName, albumPrice, albumImageURL ORDER BY totalOrders DESC";
-      
+    
       PreparedStatement pstmt = con.prepareStatement(SQL);
+      // If a name filter is provided, set the first parameter of the prepared statement to the name filters
       if (!name.equals("")) {
         pstmt.setString(1, "%" + name + "%");
       }
+      // If a genre filter is provided, set the second parameter of the prepared statement to the genre filter
       if (!filter.equals("")) {
+        // If a name filter is also provided, set the second parameter to the genre filter
+        // Otherwise, set the first parameter to the genre filter
         pstmt.setString(!name.equals("") ? 2 : 1, "%" + filter + "%");
       }
+      // Execute the prepared statement and retrieve the results
       ResultSet rslt = pstmt.executeQuery();
+
+      // Set a boolean flag to indicate whether the result set has any rows
       boolean hasRows = false;
 
       // Get the logged in user's most purchased genre
