@@ -17,7 +17,13 @@ The contributors of the project were:
 
 ## Running the Site Locally
 
-To run the site locally, run `docker-compose up` in your Terminal in the root directory with Docker Desktop open. After the containers have finished building, go to [http://localhost/shop/loaddata.jsp](http://localhost/shop/loaddata.jsp). Once the data is loaded, the homepage is accessible via [http://localhost/shop](http://localhost/shop).
+To run the site **locally**:
+
+- Open Docker Desktop
+- Navigate to the root directory of the project on your Terminal
+- Run `docker-compose up` 
+
+After the containers have finished building, go to [http://localhost/shop/loaddata.jsp](http://localhost/shop/loaddata.jsp). Once the data is loaded, the homepage is accessible via [http://localhost/shop](http://localhost/shop).
 
 ## Screenshots
 
